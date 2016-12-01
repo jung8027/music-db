@@ -2,6 +2,7 @@ const Sequelize = require('sequelize');
 const sequelizeConnection = require('../db');
 const Artist = require('./artist-model');
 const Genre = require('./genre-model')
+const Playlist = require('./playlist-model')
 
 var Song = sequelizeConnection.define('song', {
   title: {
@@ -16,5 +17,6 @@ var Song = sequelizeConnection.define('song', {
 
 Song.belongsTo(Artist);
 Song.belongsToMany(Genre, {through 'song-genre'})
+Song.belongsToMany(Playlist,{through 'song-playlist'})
 
 module.exports = Song;
