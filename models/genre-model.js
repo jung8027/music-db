@@ -5,9 +5,11 @@ const Song = require('./song-model');
 var Genre = sequelizeConnection.define('genre', {
   title: {
     type: Sequelize.STRING,
-    validate: {is: /^[a-zA -Z0-9]{1,250}$/} // validate input
+    validate: {len: [1,100]} // validate input
   }
 });
 
-Genre.belongsToMany(Song,{through 'song-genre'})
+// Genre.belongsToMany(Song,{through: 'SongGenre'})
+// Song.belongsToMany(Playlist,{through: 'SongPlaylist'})
+
 module.exports = Genre;
