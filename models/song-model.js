@@ -4,9 +4,14 @@ const Artist = require('./artist-model');
 const Genre = require('./genre-model')
 
 var Song = sequelizeConnection.define('song', {
-  title: {type: Sequelize.STRING},
-  youtube_url: {type: Sequelize.STRING},
-  validate: {is: /^[a-zA-Z0-9]{1,100}$/}
+  title: {
+  	type: Sequelize.STRING, 
+  	validate: {is: /^[a-zA-Z0-9]{1,250}$/} 
+  },
+  youtube_url: {
+  	type: Sequelize.STRING,
+  	validate: {isURL: true, is: /^[a-zA-Z]{1,100}$/} 
+  }
 });
 
 Song.belongsTo(Artist);
