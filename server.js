@@ -7,7 +7,10 @@ const sequelizeConnection = require('./db');
 
 //ROUTES//
 const router = require('./routes');
-const artistRoute = router.artistRoute;
+const artistsRoute = router.artistsRoute;
+const songsRoute = router.songsRoute;
+const playlistsRoute = router.playlistsRoute;
+const genresRoute = router.genresRoute;
 
 
 //body-parser middleware adds .body property to req (if we make a POST AJAX request with some data attached, that data will be accessible as req.body)
@@ -18,4 +21,7 @@ app.listen('9999', () => console.log('Listening on port 9999'));
 
 
 //ROUTER URL PATHS//
-app.use('/api/artists', artistRoute)
+app.use('/api/artists', artistsRoute);
+app.use('/api/songs', songsRoute);
+app.use('/api/playlists', playlistsRoute);
+app.use('/api/genres', genresRoute);

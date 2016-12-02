@@ -1,4 +1,4 @@
-const Playlist = require('../models/playlist-model');
+const Genre = require('../models/genre-model');
 const express = require('express');
 const router = express.Router();
 
