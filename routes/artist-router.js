@@ -5,14 +5,14 @@ const router = express.Router();
 //FUNCTIONS//
 const getAllArtists = (req,res)=>(
   Artist.findAll()
-   .then((data)=>
+  .then((data)=>
    	res.send(data)
    	)
   )
 
+
 //ROUTES//
 router.route('/')
  .get(getAllArtists)
-
 
 module.exports = router
