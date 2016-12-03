@@ -33,21 +33,46 @@ const postNewPlaylist = (req,res)=>{
 	)
 }
 
-const updatePlaylist = (req,res)=>{
+const updatePlaylistSong = (req,res)=>{
 	Song.findOne({ 
 		where: { title: req.params.songName } 
 	})
 	.then((songInfo)=>{
 		Playlist.findOne({ 
-			where: {id: req.params.id}, 
-			include: [Song] 
+			where: {id: req.params.id}
 		})
-		.then(playlistInfo=>
-			playlistInfo.addSongs([songInfo[0].dataValues.id])
-		)
+		.then(playlistInfo=>{
+			playlistInfo.addSongs([songInfo.dataValues.id])
+		})
 	})
 	.then(()=>
 		res.send('Playlist ID:'+req.params.id+' updated with song: '+req.params.songName)
+	)
+}
+
+const removePlaylistSong = (req,res)=>{
+	Song.findOne({
+		where: {title: req.params.songName}
+	})
+	.then((songInfo)=>
+		Playlist.findOne({
+			where: {id: req.params.id}
+		})
+		.then((playlistInfo)=>(
+			playlistInfo.getSongs()
+		)
+		.then((playlistSongArray)=>{
+      let playlistSongIdArray = playlistSongArray.map((songIDs)=>songIDs.dataValues.id);
+      let songIndex = songInfo.dataValues.id;
+			let index = playlistSongIdArray.indexOf(songIndex);
+			if(index > -1){playlistSongIdArray.splice(index, 1)};
+			let newSongArray = playlistSongIdArray;
+			playlistInfo.setSongs(newSongArray)
+    })
+	)
+	.then(()=>
+		res.send('Removed '+req.params.songName+' from playlist with Id:'+req.params.id)
+	)
 	)
 }
 
@@ -80,7 +105,8 @@ router.route('/')
   .post(postNewPlaylist) // needs title
 
 router.route('/:id/:songName')
-  .put(updatePlaylist)
+  .put(updatePlaylistSong)
+  .delete(removePlaylistSong)
 
 router.route('/:id')
   .get(getPlaylistById)
