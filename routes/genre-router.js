@@ -4,15 +4,19 @@ const router = express.Router();
 
 //FUNCTIONS//
 const getAllGenres = (req,res)=>(
-	Genre.findAll({ order:[['title', 'ASC']] })
-	.then(data=>res.send(data)
-		)
+	Genre.findAll({
+    order:[['title', 'ASC']] 
+  })
+	.then(genreInfo=>res.send(genreInfo)
+    )
 	)
 
 const getGenresById = (req,res)=>(
-  Genre.findOne({ where: {id: req.params.id} })
+  Genre.findOne({
+    where: {id: req.params.id} 
+  })
   .then(GenreId=>res.send(GenreId)
-  	)
+    )
 	)
 
 const postNewGenre = (req,res)=>{
@@ -20,22 +24,31 @@ const postNewGenre = (req,res)=>{
   Genre.create({
   	title: body.title
   })
-  .then(()=>res.send(body.title+' genre created!'))
+  .then(()=>
+    res.send(body.title+' genre created!')
+    )
 	}
 
 const deleteGenreById = (req,res)=>(
-  Genre.destroy({ where: { id: req.params.id } })
-  .then(()=> res.send('Genre with id: '+req.params.id+' has been deleted'))
+  Genre.destroy({ 
+    where: { id: req.params.id } 
+  })
+  .then(()=> 
+    res.send('Genre with id: '+req.params.id+' has been deleted')
+    )
   )
 	
 const updateGenre = (req,res)=>(
-  Genre.findOne({ where: {id: req.params.id} })
-  .then((genreInfo)=>
-		genreInfo.update( {
-  	  title: req.params.newGenre }
-    )
+  Genre.findOne({ 
+    where: {id: req.params.id} 
+  })
+  .then(genreInfo=>
+		genreInfo.update({
+  	  title: req.params.newGenre 
+    })
   )
-  .then((genreInfo)=> res.send('Genre has been updated to '+req.params.newGenre)
+  .then(()=> 
+    res.send('Genre with Id:'+req.params.id+' has been updated to '+req.params.newGenre)
   	)
 	)
 
