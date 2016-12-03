@@ -7,17 +7,19 @@ const getAllGenres = (req,res)=>(
 	Genre.findAll({
     order:[['title', 'ASC']] 
   })
-	.then(genreInfo=>res.send(genreInfo)
-    )
-	)
+	.then(genreInfo=>
+    res.send(genreInfo)
+  )
+)
 
 const getGenresById = (req,res)=>(
   Genre.findOne({
     where: {id: req.params.id} 
   })
-  .then(GenreId=>res.send(GenreId)
-    )
-	)
+  .then(GenreId=>
+    res.send(GenreId)
+  )
+)
 
 const postNewGenre = (req,res)=>{
 	let body = req.body;
@@ -26,8 +28,8 @@ const postNewGenre = (req,res)=>{
   })
   .then(()=>
     res.send(body.title+' genre created!')
-    )
-	}
+  )
+}
 
 const deleteGenreById = (req,res)=>(
   Genre.destroy({ 
@@ -35,8 +37,8 @@ const deleteGenreById = (req,res)=>(
   })
   .then(()=> 
     res.send('Genre with id: '+req.params.id+' has been deleted')
-    )
   )
+)
 	
 const updateGenre = (req,res)=>(
   Genre.findOne({ 
@@ -49,8 +51,8 @@ const updateGenre = (req,res)=>(
   )
   .then(()=> 
     res.send('Genre with Id:'+req.params.id+' has been updated to '+req.params.newGenre)
-  	)
-	)
+  )
+)
 
 //ROUTES//
 router.route('/')
