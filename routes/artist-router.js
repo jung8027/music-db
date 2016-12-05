@@ -32,7 +32,7 @@ const deleteArtist = (req,res)=>{
 	.then((id)=>{res.send(id.name + ' has been deleted!')})
 }
 
-
+//  /api/artists/:id/:newName  (update)
 const updateArtist = (req,res)=>{
 	Artist.update(
 		{name:req.params.newName},
