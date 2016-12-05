@@ -1,6 +1,7 @@
 const Sequelize = require('sequelize');
 const sequelizeConnection = require('../db');
 
+//create artist model
 var Artist = sequelizeConnection.define('artist', {
   name: {
     type: Sequelize.STRING,

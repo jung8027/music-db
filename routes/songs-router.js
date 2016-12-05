@@ -1,4 +1,5 @@
 const Song = require('../models/song-model');
+const Artist = require('../models/artist-model');
 const Genre = require('../models/genre-model');
 const express = require('express');
 const router = express.Router();
@@ -18,14 +19,35 @@ const getOneSong = (req,res)=>{
 	.then((data)=>{res.send(data)})
 }
 
-//not working
+
+
 // // /api/songs POST (create) a new song
-// // To add in the genres you will need to use a special 'accessor' method. That Sequelize automatically creates. Checkout the following Sequelize docs and look at the 'getUsers', 'setUsers', 'addUser', 'addProject', 'setProject', 'getProject', etc. examples. These methods are all automatically created and will be named according to the name of your models. You can also see the song-seed.js file for a code example of one of these methods in use. Note that when you call the methods you have to use them on the individual songs (aka instances) and not on the model itself.
-// /api/songs
-const createOneSong = (req,res)=>{
-	Song.create({title:req.body.title})
-	.then((data)=>{res.send(data)})
+const postNewSong = (req,res)=>{
+	let body = req.body;
+	Artist.findOrCreate({
+		where: {name: body.artistName}
+	})
+	.then(artistInfo=>
+		Song.create({
+			title: body.title,
+			youtube_url: body.youtube_url,
+			artistId: artistInfo[0].dataValues.id
+		})
+		.then(songInfo=>{
+			Genre.findOrCreate({
+				where: {title: body.genre}
+			})
+			.then(genreInfo=>
+				songInfo.addGenres([genreInfo[0].dataValues.id])
+			)
+		})
+	)
+	.then(()=>
+		res.send('Song with name: '+body.title+', artist: '+body.artistName+', genre: '+body.genre+', youtube_url: '+body.youtube_url+' created!')
+	)
 }
+
+
 
 
 // /api/songs/:id/:newTitle (update) a specific song's title
@@ -50,7 +72,7 @@ const deleteSong = (req,res)=>{
 //ROUTES//
 router.route('/')
 .get(getAllSongs)
-.post(createOneSong)
+.post(postNewSong)//needs artistName, genre, youtube_url and title
 
 router.route('/:id')
 .get(getOneSong)
