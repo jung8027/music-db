@@ -5,6 +5,8 @@ const bodyParser = require('body-parser');
 const Sequelize = require('sequelize');
 const sequelizeConnection = require('./db');
 
+app.use(express.static(path.join(__dirname, '/front/bundle')));
+
 //ROUTES//
 const router = require('./routes');
 const artistsRoute = router.artistsRoute;
@@ -25,3 +27,6 @@ app.use('/api/artists', artistsRoute);
 app.use('/api/songs', songsRoute);
 app.use('/api/playlists', playlistsRoute);
 app.use('/api/genres', genresRoute);
+app.get('/*', (req, res) => {
+  res.sendFile(path.join(__dirname, '/front/index.html'));
+});
