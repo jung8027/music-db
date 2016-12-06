@@ -8,7 +8,7 @@ const router = express.Router();
 
 // '/api/songs' with genre and artist
 const getAllSongs = (req,res)=>{
-	Song.findAll({include: [Genre]})
+	Song.findAll({include: [Genre, Artist]})
 	.then((data)=>{res.send(data)})
 }
 

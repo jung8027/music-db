@@ -75,15 +75,15 @@
 	
 	var _Artists2 = _interopRequireDefault(_Artists);
 	
-	var _Songs = __webpack_require__(237);
+	var _Songs = __webpack_require__(238);
 	
 	var _Songs2 = _interopRequireDefault(_Songs);
 	
-	var _NewSongs = __webpack_require__(238);
+	var _NewSongs = __webpack_require__(239);
 	
 	var _NewSongs2 = _interopRequireDefault(_NewSongs);
 	
-	var _Playlists = __webpack_require__(239);
+	var _Playlists = __webpack_require__(240);
 	
 	var _Playlists2 = _interopRequireDefault(_Playlists);
 	
@@ -26444,24 +26444,114 @@
 	'use strict';
 	
 	Object.defineProperty(exports, "__esModule", {
-		value: true
+	  value: true
 	});
 	
 	var _react = __webpack_require__(2);
 	
 	var _react2 = _interopRequireDefault(_react);
 	
+	var _reactRouter = __webpack_require__(179);
+	
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 	
+	// import './Nav.css'
+	// import 'bootstrap/dist/js/bootstrap.js';
+	// import 'bootstrap/dist/css/bootstrap.css';
+	
+	{/*NAVIGATION BAR*/}
 	var Navbar = _react2.default.createClass({
-		displayName: 'Navbar',
-		render: function render() {
-			return _react2.default.createElement(
-				'div',
-				null,
-				'Navbar'
-			);
-		}
+	  displayName: 'Navbar',
+	
+	  render: function render() {
+	    return _react2.default.createElement(
+	      'div',
+	      null,
+	      _react2.default.createElement(
+	        'nav',
+	        { className: 'navbar main' },
+	        _react2.default.createElement(
+	          'div',
+	          { className: 'logo col-xs-3' },
+	          _react2.default.createElement(
+	            'a',
+	            { href: '/', className: 'logoWidth' },
+	            _react2.default.createElement('img', { src: 'http://www.freeindex.co.uk/aspjpeg/showimage.asp?img=logo.jpg&folder=listingpics/692/506/&maxW=230&maxH=80' })
+	          )
+	        )
+	      ),
+	      _react2.default.createElement(
+	        'nav',
+	        { className: 'navbar navbar-default' },
+	        _react2.default.createElement(
+	          'div',
+	          { className: 'container-fluid' },
+	          _react2.default.createElement(
+	            'div',
+	            { className: 'collapse navbar-collapse' },
+	            _react2.default.createElement(
+	              'ul',
+	              { className: 'nav navbar-nav' },
+	              _react2.default.createElement(
+	                'li',
+	                { className: 'linetext' },
+	                _react2.default.createElement(
+	                  _reactRouter.Link,
+	                  { to: '/artists' },
+	                  'Artists'
+	                )
+	              ),
+	              _react2.default.createElement(
+	                'li',
+	                { className: 'linetext' },
+	                _react2.default.createElement(
+	                  _reactRouter.Link,
+	                  { to: '/songs' },
+	                  'Songs'
+	                )
+	              ),
+	              _react2.default.createElement(
+	                'li',
+	                { className: 'linetext' },
+	                _react2.default.createElement(
+	                  _reactRouter.Link,
+	                  { to: '/songs/newsong' },
+	                  'NewSongs'
+	                )
+	              ),
+	              _react2.default.createElement(
+	                'li',
+	                { className: 'linetext' },
+	                _react2.default.createElement(
+	                  _reactRouter.Link,
+	                  { to: '/playlists' },
+	                  'Playlists'
+	                )
+	              ),
+	              _react2.default.createElement(
+	                'li',
+	                { className: 'linetext' },
+	                _react2.default.createElement(
+	                  _reactRouter.Link,
+	                  { to: '/playlists/newPlaylist' },
+	                  'NewPlaylist'
+	                )
+	              ),
+	              _react2.default.createElement(
+	                'li',
+	                { className: 'linetext' },
+	                _react2.default.createElement(
+	                  _reactRouter.Link,
+	                  { to: '/playlists/:playlistId' },
+	                  'Playlist'
+	                )
+	              )
+	            )
+	          )
+	        )
+	      )
+	    );
+	  }
 	});
 	
 	exports.default = Navbar;
@@ -26502,93 +26592,6 @@
 	'use strict';
 	
 	Object.defineProperty(exports, "__esModule", {
-		value: true
-	});
-	
-	var _react = __webpack_require__(2);
-	
-	var _react2 = _interopRequireDefault(_react);
-	
-	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-	
-	var Artists = _react2.default.createClass({
-		displayName: 'Artists',
-		render: function render() {
-			return _react2.default.createElement(
-				'div',
-				null,
-				'Artists'
-			);
-		}
-	});
-	
-	exports.default = Artists;
-
-/***/ },
-/* 237 */
-/***/ function(module, exports, __webpack_require__) {
-
-	'use strict';
-	
-	Object.defineProperty(exports, "__esModule", {
-		value: true
-	});
-	
-	var _react = __webpack_require__(2);
-	
-	var _react2 = _interopRequireDefault(_react);
-	
-	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-	
-	var Songs = _react2.default.createClass({
-		displayName: 'Songs',
-		render: function render() {
-			return _react2.default.createElement(
-				'div',
-				null,
-				'Songs'
-			);
-		}
-	});
-	
-	exports.default = Songs;
-
-/***/ },
-/* 238 */
-/***/ function(module, exports, __webpack_require__) {
-
-	'use strict';
-	
-	Object.defineProperty(exports, "__esModule", {
-		value: true
-	});
-	
-	var _react = __webpack_require__(2);
-	
-	var _react2 = _interopRequireDefault(_react);
-	
-	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-	
-	var NewSongs = _react2.default.createClass({
-		displayName: 'NewSongs',
-		render: function render() {
-			return _react2.default.createElement(
-				'div',
-				null,
-				'NewSongs'
-			);
-		}
-	});
-	
-	exports.default = NewSongs;
-
-/***/ },
-/* 239 */
-/***/ function(module, exports, __webpack_require__) {
-
-	'use strict';
-	
-	Object.defineProperty(exports, "__esModule", {
 	  value: true
 	});
 	
@@ -26596,82 +26599,53 @@
 	
 	var _react2 = _interopRequireDefault(_react);
 	
-	var _reactRouter = __webpack_require__(179);
-	
-	var _jquery = __webpack_require__(240);
-	
-	var _jquery2 = _interopRequireDefault(_jquery);
-	
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 	
-	var Playlists = _react2.default.createClass({
-	  displayName: 'Playlists',
+	var $ = __webpack_require__(237);
+	
+	var Artists = _react2.default.createClass({
+	  displayName: 'Artists',
 	  getInitialState: function getInitialState() {
-	    return { playlists: [] };
+	    return { artist: [] };
 	  },
+	
+	
 	  componentDidMount: function componentDidMount() {
 	    var _this = this;
 	
-	    _jquery2.default.ajax({
-	      url: '/api/playlists',
+	    $.ajax({
+	      url: "/api/artists",
 	      method: 'GET'
 	    }).done(function (data) {
-	      return _this.setState({ playlists: data });
+	      return _this.setState({ artist: data });
 	    });
 	  },
-	  deletePlaylist: function deletePlaylist(id) {
-	    // $.ajax({
-	    // 	url: '/api/playlists'+id,
-	    // 	method: 'DELETE',
-	    // })
-	    console.log(id);
-	  },
-	  render: function render() {
-	    var _this2 = this;
 	
+	  render: function render() {
 	    return _react2.default.createElement(
 	      'div',
-	      null,
+	      { className: 'container' },
 	      _react2.default.createElement(
-	        'h2',
+	        'h1',
 	        null,
-	        'PLAYLISTS:'
+	        'FEATURE ARTIST LIST'
 	      ),
-	      _react2.default.createElement(
-	        'h3',
-	        null,
-	        'New Playlist'
-	      ),
-	      _react2.default.createElement(
-	        _reactRouter.Link,
-	        { to: '/playlists/newPlaylist' },
-	        _react2.default.createElement('input', { type: 'button', value: '+' })
-	      ),
-	      this.state.playlists.map(function (element, index) {
+	      this.state.artist.map(function (ele, i) {
 	        return _react2.default.createElement(
-	          'div',
-	          { key: index },
-	          _react2.default.createElement(
-	            _reactRouter.Link,
-	            { to: '/playlists/' + element.id },
-	            _react2.default.createElement(
-	              'h3',
-	              null,
-	              element.title
-	            )
-	          ),
-	          _react2.default.createElement('input', { type: 'button', value: '+' }),
-	          _react2.default.createElement('input', { type: 'button', value: '-', onClick: _this2.deletePlaylist.bind(_this2, element.id) })
+	          'li',
+	          { key: i },
+	          ele.id + '   ',
+	          ele.name
 	        );
 	      })
 	    );
 	  }
 	});
 	
-	exports.default = Playlists;
+	exports.default = Artists;
 
 /***/ },
-/* 240 */
+/* 237 */
 /***/ function(module, exports, __webpack_require__) {
 
 	var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;/*!
@@ -36895,6 +36869,220 @@
 	return jQuery;
 	} );
 
+
+/***/ },
+/* 238 */
+/***/ function(module, exports, __webpack_require__) {
+
+	'use strict';
+	
+	Object.defineProperty(exports, "__esModule", {
+		value: true
+	});
+	
+	var _react = __webpack_require__(2);
+	
+	var _react2 = _interopRequireDefault(_react);
+	
+	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+	
+	var $ = __webpack_require__(237);
+	
+	var Songs = _react2.default.createClass({
+		displayName: 'Songs',
+		getInitialState: function getInitialState() {
+			return { song: [] };
+		},
+	
+	
+		componentDidMount: function componentDidMount() {
+			var _this = this;
+	
+			$.ajax({
+				url: "/api/songs",
+				method: 'GET'
+			}).done(function (data) {
+				_this.setState({ song: data });
+			});
+		},
+		render: function render() {
+			return _react2.default.createElement(
+				'div',
+				null,
+				_react2.default.createElement(
+					'h1',
+					null,
+					'FEATURES SONGS'
+				),
+				this.state.song.map(function (ele, i) {
+					{
+						return _react2.default.createElement(
+							'div',
+							{ key: i },
+							_react2.default.createElement(
+								'h3',
+								null,
+								'Title: ',
+								ele.title
+							),
+							_react2.default.createElement(
+								'h3',
+								null,
+								'Artist Name: ',
+								ele.artist.name
+							),
+							_react2.default.createElement(
+								'div',
+								null,
+								_react2.default.createElement('iframe', {
+									id: 'ytplayer',
+									type: 'text/html',
+									width: '640', height: '360',
+									src: ele.youtube_url.replace('watch?v=', 'embed/') + '?origin=http://localhost:9999.com' })
+							)
+						);
+					}
+				})
+			);
+		}
+	});
+	
+	exports.default = Songs;
+	
+	///
+	
+	
+	// {
+	// 					return <div key={i}>
+	// 								<h3>Title: {ele.title}</h3>
+	// 								<h3>Artist Name: {ele.artist.name}</h3>
+	// 								<h3>Artist Name: {ele.artist.name}</h3>
+	// 								<div>
+	// 									<iframe id="ytplayer" 
+	// 										type="text/html" width="640" 
+	// 										height="360"
+	// 										src={`${ele.youtube_url.replace('watch?v=', 'embed/')}`}>
+	// 									</iframe>
+	// 								</div>
+	// 					       </div>
+	// 				}
+
+/***/ },
+/* 239 */
+/***/ function(module, exports, __webpack_require__) {
+
+	'use strict';
+	
+	Object.defineProperty(exports, "__esModule", {
+		value: true
+	});
+	
+	var _react = __webpack_require__(2);
+	
+	var _react2 = _interopRequireDefault(_react);
+	
+	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+	
+	var NewSongs = _react2.default.createClass({
+		displayName: 'NewSongs',
+		render: function render() {
+			return _react2.default.createElement(
+				'div',
+				null,
+				'NewSongs'
+			);
+		}
+	});
+	
+	exports.default = NewSongs;
+
+/***/ },
+/* 240 */
+/***/ function(module, exports, __webpack_require__) {
+
+	'use strict';
+	
+	Object.defineProperty(exports, "__esModule", {
+	  value: true
+	});
+	
+	var _react = __webpack_require__(2);
+	
+	var _react2 = _interopRequireDefault(_react);
+	
+	var _reactRouter = __webpack_require__(179);
+	
+	var _jquery = __webpack_require__(237);
+	
+	var _jquery2 = _interopRequireDefault(_jquery);
+	
+	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+	
+	var Playlists = _react2.default.createClass({
+	  displayName: 'Playlists',
+	  getInitialState: function getInitialState() {
+	    return { playlists: [] };
+	  },
+	  componentDidMount: function componentDidMount() {
+	    var _this = this;
+	
+	    _jquery2.default.ajax({
+	      url: '/api/playlists',
+	      method: 'GET'
+	    }).done(function (data) {
+	      return _this.setState({ playlists: data });
+	    });
+	  },
+	  deletePlaylist: function deletePlaylist(id) {
+	    // $.ajax({
+	    // 	url: '/api/playlists'+id,
+	    // 	method: 'DELETE',
+	    // })
+	    console.log(id);
+	  },
+	  render: function render() {
+	    var _this2 = this;
+	
+	    return _react2.default.createElement(
+	      'div',
+	      null,
+	      _react2.default.createElement(
+	        'h2',
+	        null,
+	        'PLAYLISTS:'
+	      ),
+	      _react2.default.createElement(
+	        'h3',
+	        null,
+	        'New Playlist'
+	      ),
+	      _react2.default.createElement(
+	        _reactRouter.Link,
+	        { to: '/playlists/newPlaylist' },
+	        _react2.default.createElement('input', { type: 'button', value: '+' })
+	      ),
+	      this.state.playlists.map(function (element, index) {
+	        return _react2.default.createElement(
+	          'div',
+	          { key: index },
+	          _react2.default.createElement(
+	            _reactRouter.Link,
+	            { to: '/playlists/' + element.id },
+	            _react2.default.createElement(
+	              'h3',
+	              null,
+	              element.title
+	            )
+	          ),
+	          _react2.default.createElement('input', { type: 'button', value: '+' }),
+	          _react2.default.createElement('input', { type: 'button', value: '-', onClick: _this2.deletePlaylist.bind(_this2, element.id) })
+	        );
+	      })
+	    );
+	  }
+	});
+	
+	exports.default = Playlists;
 
 /***/ },
 /* 241 */
