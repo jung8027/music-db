@@ -87,11 +87,11 @@
 	
 	var _Playlists2 = _interopRequireDefault(_Playlists);
 	
-	var _NewPlaylist = __webpack_require__(240);
+	var _NewPlaylist = __webpack_require__(241);
 	
 	var _NewPlaylist2 = _interopRequireDefault(_NewPlaylist);
 	
-	var _Playlist = __webpack_require__(241);
+	var _Playlist = __webpack_require__(242);
 	
 	var _Playlist2 = _interopRequireDefault(_Playlist);
 	
@@ -26598,7 +26598,7 @@
 	
 	var _reactRouter = __webpack_require__(179);
 	
-	var _jquery = __webpack_require__(242);
+	var _jquery = __webpack_require__(240);
 	
 	var _jquery2 = _interopRequireDefault(_jquery);
 	
@@ -26672,64 +26672,6 @@
 
 /***/ },
 /* 240 */
-/***/ function(module, exports, __webpack_require__) {
-
-	'use strict';
-	
-	Object.defineProperty(exports, "__esModule", {
-		value: true
-	});
-	
-	var _react = __webpack_require__(2);
-	
-	var _react2 = _interopRequireDefault(_react);
-	
-	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-	
-	var NewPlaylist = _react2.default.createClass({
-		displayName: 'NewPlaylist',
-		render: function render() {
-			return _react2.default.createElement(
-				'div',
-				null,
-				'NewPlaylist'
-			);
-		}
-	});
-	
-	exports.default = NewPlaylist;
-
-/***/ },
-/* 241 */
-/***/ function(module, exports, __webpack_require__) {
-
-	'use strict';
-	
-	Object.defineProperty(exports, "__esModule", {
-		value: true
-	});
-	
-	var _react = __webpack_require__(2);
-	
-	var _react2 = _interopRequireDefault(_react);
-	
-	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-	
-	var Playlist = _react2.default.createClass({
-		displayName: 'Playlist',
-		render: function render() {
-			return _react2.default.createElement(
-				'div',
-				null,
-				'Playlist'
-			);
-		}
-	});
-	
-	exports.default = Playlist;
-
-/***/ },
-/* 242 */
 /***/ function(module, exports, __webpack_require__) {
 
 	var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;/*!
@@ -36953,6 +36895,64 @@
 	return jQuery;
 	} );
 
+
+/***/ },
+/* 241 */
+/***/ function(module, exports, __webpack_require__) {
+
+	'use strict';
+	
+	Object.defineProperty(exports, "__esModule", {
+		value: true
+	});
+	
+	var _react = __webpack_require__(2);
+	
+	var _react2 = _interopRequireDefault(_react);
+	
+	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+	
+	var NewPlaylist = _react2.default.createClass({
+		displayName: 'NewPlaylist',
+		render: function render() {
+			return _react2.default.createElement(
+				'div',
+				null,
+				'NewPlaylist'
+			);
+		}
+	});
+	
+	exports.default = NewPlaylist;
+
+/***/ },
+/* 242 */
+/***/ function(module, exports, __webpack_require__) {
+
+	'use strict';
+	
+	Object.defineProperty(exports, "__esModule", {
+		value: true
+	});
+	
+	var _react = __webpack_require__(2);
+	
+	var _react2 = _interopRequireDefault(_react);
+	
+	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+	
+	var Playlist = _react2.default.createClass({
+		displayName: 'Playlist',
+		render: function render() {
+			return _react2.default.createElement(
+				'div',
+				null,
+				'Playlist'
+			);
+		}
+	});
+	
+	exports.default = Playlist;
 
 /***/ }
 /******/ ]);
