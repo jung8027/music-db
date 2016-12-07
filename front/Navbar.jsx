@@ -27,7 +27,6 @@ var Navbar = React.createClass({
           <div className="collapse navbar-collapse">
             <ul className="nav navbar-nav">
               <li className="linetext"><Link to="/artists">Artists</Link></li>
-
               <li className="linetext"><Link to="/songs">Songs</Link></li>
               <li className="linetext"><Link to="/songs/newsong">NewSongs</Link></li>
               <li className="linetext"><Link to="/playlists">Playlists</Link></li>  
