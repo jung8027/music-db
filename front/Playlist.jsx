@@ -26,20 +26,22 @@ const Playlist = React.createClass({
 	render(){
 		console.log(this.state.playlist)
 		return(
-			this.state.playlist ? (
-			<div>
+			this.state.playlist ? 
+			(<div>
 			<h1>Playlist Title: {this.state.playlist.title}</h1>
-			<h2>Songs:</h2>
-			{this.state.playlist.songs.map((song, index)=>
-				<div key={index}>
-				<p>{song.title}</p>
-					<iframe width="420" height="315"src={`${song.youtube_url.replace('watch?v=', 'embed/')}?origin=http://localhost:9999.com`}></iframe>
-					<br/>
-				<input type="button" value="-" onClick={this.deleteSongFromPlaylist.bind(this,song.title)}/>
-				</div>
+				{this.state.playlist.songs.map((song, index)=>
+					<div key={index}>
+						<p>Title: {song.title}</p>
+						<p>Artist: {song.artist.name}</p>
+						<p>Creation Date: {song.createdAt}</p>
+						<iframe width="420" height="315"src={`${song.youtube_url.replace('watch?v=', 'embed/')}?origin=http://localhost:9999.com`}></iframe>
+						<br/>
+						<input type="button" value="-REMOVE SONG" onClick={this.deleteSongFromPlaylist.bind(this,song.title)}/>
+					</div>
 				)}
-			</div> ) : <p>No Playlists!</p>
-			)
+			</div>) 
+			: <p>No Playlists!</p>
+		)
 	}
 })
 

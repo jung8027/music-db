@@ -1,12 +1,16 @@
 const Playlist = require('../models/playlist-model');
 const Song = require('../models/song-model');
+const Artist = require('../models/artist-model');
+const Genre = require('../models/genre-model');
 const express = require('express');
 const router = express.Router();
 
 //FUNCTIONS//
 const getAllPlaylists = (req,res) =>(
   Playlist.findAll({ 
-  	include: [Song] 
+  	include: [
+  	  {model: Song, include: [
+  	  	{model: Artist}, {model: Genre}] }] 
   })
   .then(playlistInfo=>
   	res.send(playlistInfo)
@@ -16,8 +20,10 @@ const getAllPlaylists = (req,res) =>(
 const getPlaylistById = (req,res)=>(
 	Playlist.findOne({ 
 		where: {id: req.params.id}, 
-		include: [Song] 
-	})
+		include: [
+  	  {model: Song, include: [
+  	  	{model: Artist}, {model: Genre}] }] 
+  })
 	.then(playlistId=>
 		res.send(playlistId)
 	)
