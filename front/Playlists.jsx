@@ -23,7 +23,8 @@ const Playlists = React.createClass({
 	render(){
 		return(
 			<div>
-			  <h3>Create New Playlist</h3><Link to='/playlists/newPlaylist'><input type="button" value="+CREATE NEW PLAYLIST" /></Link>
+			  <h3>List of Playlists:</h3>
+        <Link to='/playlists/newPlaylist'><input type="button" value="+CREATE NEW PLAYLIST" /></Link>
 				{this.state.playlists.map((element, index)=>(
 					<div key={index}>
 						<Link to={'/playlists/'+element.id}><h3>{element.title}</h3></Link>
