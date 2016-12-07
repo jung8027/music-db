@@ -14,17 +14,17 @@ const Playlists = React.createClass({
   .done(data=>this.setState({playlists: data}))
   },
   deletePlaylist(id){
-  // $.ajax({
-  // 	url: '/api/playlists'+id,
-  // 	method: 'DELETE',
-  // })
-  console.log(id)
+  $.ajax({
+  	url: '/api/playlists'+id,
+  	method: 'DELETE',
+  })
+  .done(()=>alert('Playlist Id:'+id+' deleted!'))
   },
 	render(){
 		return(
 			<div>
 			  <h2>PLAYLISTS:</h2>
-			  <h3>New Playlist</h3><Link to='/playlists/newPlaylist'><input type="button" value="+" /></Link>
+			  <h3>Create New Playlist</h3><Link to='/playlists/newPlaylist'><input type="button" value="+" /></Link>
 				{this.state.playlists.map((element, index)=>(
 					<div key={index}>
 						<Link to={'/playlists/'+element.id}><h3>{element.title}</h3></Link>
