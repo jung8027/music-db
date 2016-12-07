@@ -32,8 +32,6 @@ var Navbar = React.createClass({
               <li className="linetext"><Link to="/songs/newsong">NewSongs</Link></li>
               <li className="linetext"><Link to="/playlists">Playlists</Link></li>  
               <li className="linetext"><Link to="/playlists/newPlaylist">NewPlaylist</Link></li>  
-
-              <li className="linetext"><Link to="/playlists/:playlistId">Playlist</Link></li>  
             </ul>
 
 

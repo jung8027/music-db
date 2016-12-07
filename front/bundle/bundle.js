@@ -26536,15 +26536,6 @@
 	                  { to: '/playlists/newPlaylist' },
 	                  'NewPlaylist'
 	                )
-	              ),
-	              _react2.default.createElement(
-	                'li',
-	                { className: 'linetext' },
-	                _react2.default.createElement(
-	                  _reactRouter.Link,
-	                  { to: '/playlists/:playlistId' },
-	                  'Playlist'
-	                )
 	              )
 	            )
 	          )
@@ -26727,24 +26718,66 @@
 	'use strict';
 	
 	Object.defineProperty(exports, "__esModule", {
-		value: true
+	  value: true
 	});
 	
 	var _react = __webpack_require__(2);
 	
 	var _react2 = _interopRequireDefault(_react);
 	
+	var _jquery = __webpack_require__(242);
+	
+	var _jquery2 = _interopRequireDefault(_jquery);
+	
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 	
+	function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
+	
 	var NewSongs = _react2.default.createClass({
-		displayName: 'NewSongs',
-		render: function render() {
-			return _react2.default.createElement(
-				'div',
-				null,
-				'NewSongs'
-			);
-		}
+	  displayName: 'NewSongs',
+	  getInitialState: function getInitialState() {
+	    return {
+	      title: '', url: '', genre: '', artist: ''
+	    };
+	  },
+	  handelChange: function handelChange(eventType, event) {
+	    this.setState(_defineProperty({}, eventType, event.target.value));
+	  },
+	  createSong: function createSong() {
+	    var _this = this;
+	
+	    _jquery2.default.ajax({
+	      url: '/api/songs',
+	      method: 'POST',
+	      data: {
+	        title: this.state.title,
+	        artistName: this.state.artist,
+	        genre: this.state.genre,
+	        youtube_url: this.state.url
+	      }
+	    }).done(function () {
+	      return alert('Created song with title: ' + _this.state.title + ', artist: ' + _this.state.artist + ', genre: ' + _this.state.genre + ', url: ' + _this.state.url);
+	    }).then(function () {
+	      return _this.setState({ title: '', url: '', genre: '', artist: '' });
+	    });
+	  },
+	  render: function render() {
+	    console.log(this.state);
+	    return _react2.default.createElement(
+	      'div',
+	      null,
+	      _react2.default.createElement(
+	        'h1',
+	        null,
+	        'New Song:'
+	      ),
+	      _react2.default.createElement('input', { type: 'text', placeholder: 'Title of song', onChange: this.handelChange.bind(this, 'title'), value: this.state.input }),
+	      _react2.default.createElement('input', { type: 'text', placeholder: 'Youtube URL', onChange: this.handelChange.bind(this, 'url'), value: this.state.input }),
+	      _react2.default.createElement('input', { type: 'text', placeholder: 'Artist', onChange: this.handelChange.bind(this, 'artist'), value: this.state.input }),
+	      _react2.default.createElement('input', { type: 'text', placeholder: 'Genre', onChange: this.handelChange.bind(this, 'genre'), value: this.state.input }),
+	      _react2.default.createElement('input', { type: 'button', value: 'SAVE', onClick: this.createSong })
+	    );
+	  }
 	});
 	
 	exports.default = NewSongs;
