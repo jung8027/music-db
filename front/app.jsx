@@ -9,6 +9,7 @@ import NewSongs from './NewSongs'
 import Playlists from './Playlists'
 import NewPlaylist from './NewPlaylist'
 import Playlist from './Playlist'
+import AddSongToPlaylist from './AddSongToPlaylist'
 
 const App = React.createClass({
 	render(){
@@ -31,6 +32,7 @@ ReactDom.render(
       <Route path="/playlists" component={Playlists} />
       <Route path="/playlists/newPlaylist" component={NewPlaylist} />
       <Route path="/playlists/:playlistId" component={Playlist} />
+      <Route path="/playlists/:playlistId/Songs" component={AddSongToPlaylist} />
     </Route>
   </Router>,
 	document.getElementById('app')
