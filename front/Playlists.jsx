@@ -27,7 +27,7 @@ const Playlists = React.createClass({
 				{this.state.playlists.map((element, index)=>(
 					<div key={index}>
 						<Link to={'/playlists/'+element.id}><h3>{element.title}</h3></Link>
-						<input type="button" value="+ADD SONG" />
+						<Link to={'/playlists/'+element.id+'/songs'}><input type="button" value="+ADD SONG" /></Link>
 						<input type="button" value="-DELETE PLAYLIST" onClick={this.deletePlaylist.bind(this,element.id)}/>
 					</div>
 				))
