@@ -15,7 +15,7 @@ const getAllSongs = (req,res)=>{
 
 // /api/songs/:id GET specific song by id
 const getOneSong = (req,res)=>{
-	Song.findById(req.params.id)
+	Song.findOne({where: {id: req.params.id}, include: [Genre, Artist]})
 	.then((data)=>{res.send(data)})
 }
 
