@@ -4,7 +4,7 @@ const WelcomePage = React.createClass({
 	render(){
 		return(
 			<div>
-				Welcome Page
+				<h1>Welcome to Jung and Luis Music Playlist App</h1>
 			</div>
 			)
 	}
