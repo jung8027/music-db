@@ -31,9 +31,10 @@ const Playlist = React.createClass({
 			<h1>Playlist Title: {this.state.playlist.title}</h1>
 				{this.state.playlist.songs.map((song, index)=>
 					<div key={index}>
-						<p>Title: {song.title}</p>
-						<p>Artist: {song.artist.name}</p>
-						<p>Creation Date: {song.createdAt}</p>
+						<h3>Title: {song.title}</h3>
+						<h3>Artist: {song.artist.name}</h3>
+						<h3>Genres: {song.genres.map((genre, index)=><p key={index}>{genre.title}</p>)}</h3>
+						<h3>Creation Date: {song.createdAt}</h3>
 						<iframe width="420" height="315"src={`${song.youtube_url.replace('watch?v=', 'embed/')}?origin=http://localhost:9999.com`}></iframe>
 						<br/>
 						<input type="button" value="-REMOVE SONG" onClick={this.deleteSongFromPlaylist.bind(this,song.title)}/>
