@@ -31,15 +31,6 @@ const postNewArtist = (req,res)=>{
 	)
 }
 
-const deleteArtistById = (req,res)=>(
-	Artist.destroy({
-		where: {name: req.params.id}
-	})
-	.then(()=> 
-    res.send('Genre with id: '+req.params.id+' has been deleted')
-  )
-)
-
 const updateArtist = (req,res)=>(
   Artist.findOne({
   	where: {id: req.params.id}
@@ -54,6 +45,12 @@ const updateArtist = (req,res)=>(
   )
 )
 
+const deleteArtist = (req,res)=>{
+	Artist.destroy({where:{id:req.params.id}})
+	.then((id)=>{res.send(id.name + ' has been deleted!')})
+}
+
+
 //ROUTES//
 router.route('/')
  .get(getAllArtists)
@@ -61,9 +58,9 @@ router.route('/')
 
 router.route('/:id')
  .get(getArtistById)
- .delete(deleteArtistById)
+ .delete(deleteArtist)
 
-router.route(':id/:newName')
- .put(updateArtist)
+router.route('/:id/:newName')
+  .put(updateArtist)
 
 module.exports = router

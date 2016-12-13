@@ -15,15 +15,6 @@ const getAllSongs = (req,res)=>(
   )
 )
 
-const getSongById = (req,res)=>(
-	Song.findOne({
-    where: {id: req.params.id} 
-  })
-  .then(SongId=>
-  	res.send(SongId)
-  )
-)
-
 const postNewSong = (req,res)=>{
 	let body = req.body;
 	Artist.findOrCreate({
@@ -49,39 +40,73 @@ const postNewSong = (req,res)=>{
 	)
 }
 
-const updateSongName = (req,res)=>(
-	Song.findOne({
-		where:{id: req.params.id}
+// '/api/songs' with genre and artist
+const getAllSongs = (req,res)=>{
+	Song.findAll({include: [Genre, Artist]})
+	.then((data)=>{res.send(data)})
+}
+
+// /api/songs/:id GET specific song by id
+const getOneSong = (req,res)=>{
+	Song.findOne({where: {id: req.params.id}, include: [Genre, Artist]})
+	.then((data)=>{res.send(data)})
+}
+
+// // /api/songs POST (create) a new song
+const postNewSong = (req,res)=>{
+	let body = req.body;
+	Artist.findOrCreate({
+		where: {name: body.artistName}
 	})
-	.then(songInfo=>
-		songInfo.update({
-			title: req.params.newName
+	.then(artistInfo=>
+		Song.create({
+			title: body.title,
+			youtube_url: body.youtube_url,
+			artistId: artistInfo[0].dataValues.id
+		})
+		.then(songInfo=>{
+			Genre.findOrCreate({
+				where: {title: body.genre}
+			})
+			.then(genreInfo=>
+				songInfo.addGenres([genreInfo[0].dataValues.id])
+			)
 		})
 	)
 	.then(()=>
-		res.send('Song with Id:'+req.params.id+' updated with name:'+req.params.newName+'!')
+		res.send('Song with name: '+body.title+', artist: '+body.artistName+', genre: '+body.genre+', youtube_url: '+body.youtube_url+' created!')
 	)
-)
+}
 
-const deleteSongById = (req,res)=>(
-	Song.destroy({
-		where:{id: req.params.id}
-	})
-	.then(()=>
-		res.send('Song with Id:'+req.params.id+' deleted!')
+// /api/songs/:id/:newTitle (update) a specific song's title
+const updateSong = (req,res)=>{
+	Song.update(
+		{title: req.params.newTitle},
+		{where: {id: req.params.id}}
 	)
-)
+	.then((id)=>{Song.findById(parseInt(id))})
+	.then((data)=>{res.send(data +' UPDATED!')})
+}
+
+
+// /api/songs/:id
+const deleteSong = (req,res)=>{
+	Song.destroy({where: {id: req.params.id}})
+	.then((id)=>{res.send(id +'DELETE!')})
+}
+
+
 
 //ROUTES//
 router.route('/')
- .get(getAllSongs)
- .post(postNewSong) //needs artistName, genre, youtube_url and title
+  .get(getAllSongs)
+  .post(postNewSong)//needs artistName, genre, youtube_url and title
 
 router.route('/:id')
- .get(getSongById)
- .delete(deleteSongById)
+  .get(getOneSong)
+  .delete(deleteSong)
 
-router.route('/:id/:newName')
- .put(updateSongName)
+router.route('/:id/:newTitle')
+  .put(updateSong)
 
 module.exports = router

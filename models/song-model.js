@@ -15,8 +15,8 @@ var Song = sequelizeConnection.define('song', {
 });
 
 
-Song.belongsTo(Artist)
-
+Song.belongsTo(Artist) //creates a column in Artist table called artistId 
+//careful call them in the same model, we declare both to many to many
 Song.belongsToMany(Genre, {through: 'SongGenre'})
 Genre.belongsToMany(Song,{through: 'SongGenre'})
 
