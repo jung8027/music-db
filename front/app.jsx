@@ -10,16 +10,37 @@ import Playlists from './Playlists'
 import NewPlaylist from './NewPlaylist'
 import Playlist from './Playlist'
 import AddSongToPlaylist from './AddSongToPlaylist'
+import $ from 'jquery'
+import Login from './Login'
 
 const App = React.createClass({
-	render(){
-		return(
-			<div>
-			<Navbar />
-			{this.props.children}
-			</div>
-			)
-	}
+  getInitialState() {
+    return {username: '', playlists: [], playlist: null, songs: [], artists: []};
+  },
+  componentDidMount() {
+    $.ajax({
+      url: '/auth',
+      method:'GET'
+    })
+    .done((username) => {
+      console.log(username)
+      if(username) {
+        console.log(username + ' is logged in!');
+        this.setState({username: username});
+      } else {
+        console.log('No one is logged in');
+      }
+    })
+  },
+  render() {
+    return (
+      <div>
+        <Navbar />
+        {this.state.username ? <p>{'Welcome ' + this.state.username}</p> : <Login /> }
+        {this.props.children}
+      </div>
+    )
+  }
 })
 
 ReactDom.render(

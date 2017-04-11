@@ -1,8 +1,5 @@
 import React from 'react';
 import {Link} from 'react-router';
-// import './Nav.css'
-// import 'bootstrap/dist/js/bootstrap.js';
-// import 'bootstrap/dist/css/bootstrap.css';
 
 {/*NAVIGATION BAR*/}
 var Navbar = React.createClass({
@@ -39,7 +36,6 @@ var Navbar = React.createClass({
           </div>{ /*/.navbar-collapse */}
         </div>{ /*/.container-fluid */}
       </nav>
-
     </div>
     )
   }
